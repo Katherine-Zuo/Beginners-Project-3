@@ -1,0 +1,48 @@
+import random  
+from string import ascii_lowercase  
+  
+word_bank = ["apple", "grain", "brick", "chess", "crazy", "drive", "enjoy", "fail", "flame", "group"]  
+  
+def is_valid_word(word):  
+   
+    return len(word) == 5 and all(char in ascii_lowercase for char in word)  
+  
+def play_wordle():  
+   
+    word_to_guess = random.choice(word_bank)  
+    guesses = 6  
+    attempts = []  
+      
+    print("Welcome to Wordle! You have 6 chances to guess a 5-letter word.")  
+      
+    while guesses > 0:  
+        guess = input(f"Attempt {len(attempts) + 1}/{6}: ").lower()  
+          
+        if not is_valid_word(guess):  
+            print("Letters only and must be 5 letters.")  
+            continue  
+          
+     
+        feedback = ['⬛' for _ in range(5)]  
+        for i, (g, w) in enumerate(zip(guess, word_to_guess)):  
+            if g == w:  
+                feedback[i] = '🟢'  
+            elif g in word_to_guess:  
+                feedback[i] = '🟡'  
+          
+        print(''.join(feedback))  
+          
+        attempts.append(guess)  
+          
+        if guess == word_to_guess:  
+            print(f"Congratulations! You guessed '{word_to_guess}' correctly.")  
+            return True  
+          
+        guesses -= 1  
+      
+    print(f"Unfortunate! The word was '{word_to_guess}'.")  
+    return False  
+  
+
+if __name__ == "__main__":  
+    play_wordle()  
