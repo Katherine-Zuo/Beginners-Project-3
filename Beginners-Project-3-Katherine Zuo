@@ -1,7 +1,7 @@
 import random  
 from string import ascii_lowercase  
   
-word_bank = ["apple", "grain", "brick", "chess", "crazy", "drive", "enjoy", "fail", "flame", "group"]  
+word_bank = ["apple", "grain", "brick", "chess", "crazy", "drive", "enjoy", "flake", "flame", "group"]  
   
 def is_valid_word(word):  
    
